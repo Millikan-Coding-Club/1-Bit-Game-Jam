@@ -245,8 +245,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   missilePrefab: {fileID: 5128520787942052635, guid: b97b4ccc5742ad3458265a924be5a00f, type: 3}
-  distance: 8
-  interval: 5
+  baseObject: {fileID: 3632214873841096904, guid: e73bf937c27ce7840869971525aafd7e, type: 3}
+  earth: {fileID: 1637787892}
+  baseAmount: 5
+  distance: 7
+  interval: 10
 --- !u!4 &1113147796
 Transform:
   m_ObjectHideFlags: 0
@@ -321,7 +324,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: 94e011fcaffeda443abe9a6f81a4cee2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 91f01c74f1e4ca24286214e8cdfaebac, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -342,7 +345,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 4, y: 4, z: 4}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -381,7 +384,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 2.85
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
