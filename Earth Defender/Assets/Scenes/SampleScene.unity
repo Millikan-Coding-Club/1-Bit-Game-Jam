@@ -528,7 +528,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   missilePrefab: {fileID: 5128520787942052635, guid: b97b4ccc5742ad3458265a924be5a00f, type: 3}
   baseObject: {fileID: 3632214873841096904, guid: e73bf937c27ce7840869971525aafd7e, type: 3}
-  earth: {fileID: 1637787892}
+  satellite: {fileID: 0}
   baseAmount: 5
   distance: 7
   interval: 10
