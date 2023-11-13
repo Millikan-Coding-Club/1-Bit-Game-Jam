@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 91f01c74f1e4ca24286214e8cdfaebac
+guid: add79d3da37099d4d83996cc6427d0bd
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -108,7 +108,112 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: ED_explosion_0
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 86
+        width: 228
+        height: 216
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c150b0325a44974d853c38857dd723e
+      internalID: -1486508474
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ED_explosion_1
+      rect:
+        serializedVersion: 2
+        x: 433
+        y: 110
+        width: 173
+        height: 184
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d12918caef94c964783efa6269a58b84
+      internalID: 399240762
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ED_explosion_2
+      rect:
+        serializedVersion: 2
+        x: 709
+        y: 141
+        width: 132
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b4bf0ea84de3e8479760dbda1756e99
+      internalID: -1715056127
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ED_explosion_3
+      rect:
+        serializedVersion: 2
+        x: 935
+        y: 161
+        width: 62
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b6278169d8b167418ae0a3d3c5549bb
+      internalID: 975822815
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ED_explosion_4
+      rect:
+        serializedVersion: 2
+        x: 1056
+        y: 173
+        width: 21
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d68beba433f00c949a265b7bafa29796
+      internalID: 6667493
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -119,7 +224,12 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      ED_explosion_0: -1486508474
+      ED_explosion_1: 399240762
+      ED_explosion_2: -1715056127
+      ED_explosion_3: 975822815
+      ED_explosion_4: 6667493
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
