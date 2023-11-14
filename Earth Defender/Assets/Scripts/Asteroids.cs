@@ -18,6 +18,7 @@ public class Asteroids : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         rotationSpeed = Random.Range(maxSpin * -1, maxSpin);
         speed = Random.Range(minSpeed, maxSpeed);
         targetX = Random.Range(-1.4f, 1.4f);
