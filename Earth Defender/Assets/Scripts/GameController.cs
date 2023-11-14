@@ -9,6 +9,8 @@ using UnityEngine.UIElements;
 
 public class GameController : MonoBehaviour
 {
+    public static string BaseSelection;
+
     public GameObject crosshair;
     public GameObject leftBase;
     public GameObject rightBase;
@@ -16,6 +18,7 @@ public class GameController : MonoBehaviour
     public GameObject rightBaseSquare;
     public GameObject satelliteSquare;
     public GameObject nuke;
+    
     public float distance = 10;
     public GameObject[] asteroids;
     [SerializeField] private float interval = 5f;
@@ -24,7 +27,7 @@ public class GameController : MonoBehaviour
     void Start()
     {
         InvokeRepeating("spawnAsteroid", 0, interval);
-        
+        BaseSelection = "right";
     }
 
     // Update is called once per frame
