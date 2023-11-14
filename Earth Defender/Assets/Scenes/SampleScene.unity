@@ -763,9 +763,23 @@ MonoBehaviour:
   rightBaseSquare: {fileID: 991285637}
   satelliteSquare: {fileID: 561948867}
   nuke: {fileID: 6813819550162170259, guid: cab94f4b6e7202346b937345649fc6a1, type: 3}
-  atlas: {fileID: 100100200, guid: 007063bf59cf77548976894999ce7c65, type: 3}
-  baseAmount: 5
+  rb: {fileID: 0}
   distance: 7
+  asteroids:
+  - {fileID: 5867217951278066596, guid: f501a3843445aba4da6986088cbed03e, type: 3}
+  - {fileID: 1182060902852982233, guid: d178615853ded7e4bbd688a1c0c8e955, type: 3}
+  - {fileID: 192938748202009693, guid: da516cac336ef57499fdee5fa4fbcdef, type: 3}
+  - {fileID: 2919283401207750174, guid: 24613803109394644b9894cc2fb24539, type: 3}
+  - {fileID: 1726604342320686002, guid: c17c04603d172114091d1cf20a405cfa, type: 3}
+  - {fileID: 3691558192476690201, guid: af8561e20d552814ba10d5a7c0d6227b, type: 3}
+  - {fileID: 6119636042522744840, guid: a24039d5f7b8b734db0c62d8f06f502f, type: 3}
+  - {fileID: 8482958844242702197, guid: 3e16d8ed661fe3c43a92052d154c6fe4, type: 3}
+  - {fileID: 600786793979745946, guid: 463b9042d4876f443af1d00a96144696, type: 3}
+  - {fileID: 2956135100693756628, guid: 41485a7536d91d04c9e3ca1a984f275f, type: 3}
+  - {fileID: 6352288387158790724, guid: 4cefc2bba076da5449a60fcbe7e1ee8e, type: 3}
+  - {fileID: 7251485677672878480, guid: a4cf6112a41abac4cbb24da30d31ef1a, type: 3}
+  - {fileID: 2722037660454646568, guid: 92df54415569f0b42ae4a24668ecffc6, type: 3}
+  - {fileID: 3055242544134557030, guid: e24aeaa6f9457f0439c374aaebff0b27, type: 3}
   interval: 10
 --- !u!4 &1113147796
 Transform:
@@ -1076,7 +1090,7 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
