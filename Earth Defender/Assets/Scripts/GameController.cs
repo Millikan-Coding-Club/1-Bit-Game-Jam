@@ -19,7 +19,7 @@ public class GameController : MonoBehaviour
     public float distance = 10;
     public GameObject[] asteroids;
     [SerializeField] private float interval = 5f;
-    public int health = 2;
+    static public int health = 3;
     // Start is called before the first frame update
     void Start()
     {
@@ -55,6 +55,11 @@ public class GameController : MonoBehaviour
                 }
             }
         }
+
+        if (health == 0)
+        {
+            gameOver();
+        }
     }
 
     private void fireMissile()
@@ -72,5 +77,10 @@ public class GameController : MonoBehaviour
         // give asteroid prefab a random asteroid sprite
 
         Instantiate(asteroids[Random.Range(0, 13)], new Vector3(x, y, 0), transform.rotation);
+    }
+
+    private void gameOver()
+    {
+        Debug.Log("Game Over");
     }
 }

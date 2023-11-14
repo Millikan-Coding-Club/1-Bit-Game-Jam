@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: add79d3da37099d4d83996cc6427d0bd
+guid: d871cb40dbb1c28428e7e2f71ab6ead8
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -124,8 +124,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8c150b0325a44974d853c38857dd723e
-      internalID: -1486508474
+      spriteID: 1e241720e2869ed43a57a11334cca163
+      internalID: 1910534327
       vertices: []
       indices: 
       edges: []
@@ -145,8 +145,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d12918caef94c964783efa6269a58b84
-      internalID: 399240762
+      spriteID: 42fafd7191470f24b9eb2fa5cd02d355
+      internalID: 1551571222
       vertices: []
       indices: 
       edges: []
@@ -166,8 +166,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8b4bf0ea84de3e8479760dbda1756e99
-      internalID: -1715056127
+      spriteID: 0e4e705f74df37f4fa0c3200d5a68688
+      internalID: -66413415
       vertices: []
       indices: 
       edges: []
@@ -187,8 +187,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8b6278169d8b167418ae0a3d3c5549bb
-      internalID: 975822815
+      spriteID: be26b0f58f324824f9b60e2304921308
+      internalID: -288113052
       vertices: []
       indices: 
       edges: []
@@ -208,8 +208,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d68beba433f00c949a265b7bafa29796
-      internalID: 6667493
+      spriteID: 711c378cff66e064fb5dc3bc44d639f6
+      internalID: 658742139
       vertices: []
       indices: 
       edges: []
@@ -225,11 +225,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      ED_explosion_0: -1486508474
-      ED_explosion_1: 399240762
-      ED_explosion_2: -1715056127
-      ED_explosion_3: 975822815
-      ED_explosion_4: 6667493
+      ED_explosion_0: 1910534327
+      ED_explosion_1: 1551571222
+      ED_explosion_2: -66413415
+      ED_explosion_3: -288113052
+      ED_explosion_4: 658742139
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

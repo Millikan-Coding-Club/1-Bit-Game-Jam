@@ -102,6 +102,11 @@ MonoBehaviour:
   minSpeed: 0.05
   maxSpeed: 1.5
   maxSpin: 75
+  explosion: {fileID: 7778536063406110534, guid: d48c2c4419d00a04bb8c0aef9476ad99, type: 3}
+  leftBase: {fileID: 0}
+  rightBase: {fileID: 0}
+  leftBaseSquare: {fileID: 0}
+  rightBaseSquare: {fileID: 0}
 --- !u!60 &1557471927973235861
 PolygonCollider2D:
   m_ObjectHideFlags: 0

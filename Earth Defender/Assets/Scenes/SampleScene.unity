@@ -268,7 +268,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3632214873841096904, guid: e73bf937c27ce7840869971525aafd7e, type: 3}
       propertyPath: m_Name
-      value: Base
+      value: LeftBase
       objectReference: {fileID: 0}
     - target: {fileID: 6259920509368901920, guid: e73bf937c27ce7840869971525aafd7e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -377,7 +377,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 7
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -548,7 +548,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3632214873841096904, guid: e73bf937c27ce7840869971525aafd7e, type: 3}
       propertyPath: m_Name
-      value: Base
+      value: RightBase
       objectReference: {fileID: 0}
     - target: {fileID: 6259920509368901920, guid: e73bf937c27ce7840869971525aafd7e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -755,7 +755,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 870f5d622e38c1b4186adfdcfa074077, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  asteroidPrefab: {fileID: 5128520787942052635, guid: b97b4ccc5742ad3458265a924be5a00f, type: 3}
   crosshair: {fileID: 4862917518061434782, guid: 8565c7ea70f665f4f910cf86dd38cac0, type: 3}
   leftBase: {fileID: 257283349}
   rightBase: {fileID: 2122178693}
@@ -763,7 +762,6 @@ MonoBehaviour:
   rightBaseSquare: {fileID: 991285637}
   satelliteSquare: {fileID: 561948867}
   nuke: {fileID: 6813819550162170259, guid: cab94f4b6e7202346b937345649fc6a1, type: 3}
-  rb: {fileID: 0}
   distance: 7
   asteroids:
   - {fileID: 5867217951278066596, guid: f501a3843445aba4da6986088cbed03e, type: 3}
