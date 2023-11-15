@@ -15,10 +15,10 @@ public class Asteroids : MonoBehaviour
     private float rotationSpeed;
     private float targetX;
     private float targetY;
-    public GameObject leftBase;
-    public GameObject rightBase;
-    public GameObject leftBaseSquare;
-    public GameObject rightBaseSquare;
+    private GameObject leftBase;
+    private GameObject rightBase;
+    private GameObject leftBaseSquare;
+    private GameObject rightBaseSquare;
 
     // Start is called before the first frame update
     void Start()
@@ -27,6 +27,10 @@ public class Asteroids : MonoBehaviour
         speed = Random.Range(minSpeed, maxSpeed);
         targetX = Random.Range(-1.4f, 1.4f);
         targetY = Random.Range(-1.4f, 1.4f);
+        leftBase = GameObject.Find("LeftBase");
+        rightBase = GameObject.Find("RightBase");
+        leftBaseSquare = GameObject.Find("leftBaseSquare");
+        rightBaseSquare = GameObject.Find("rightBaseSquare");
     }
 
     // Update is called once per frame
@@ -41,20 +45,39 @@ public class Asteroids : MonoBehaviour
         if (collision.gameObject.name == "Earth")
         {
             Destroy(this.gameObject);
-            GameController.health -= 1;
-            
+            if (leftBase != null && rightBase != null)
+            {
+                if (Vector3.Distance(rightBase.transform.position, transform.position) > Vector3.Distance(leftBase.transform.position, transform.position))
+                {
+                    destroyLeftBase();
+                }
+                else
+                {
+                    destroyRightBase();
+                }
+            } else if (leftBase == null)
+            {
+                destroyRightBase();
+            } else
+            {
+                destroyLeftBase();
+            }
         }
 
         if (collision.gameObject.name == "LeftBase")
         {
             destroyLeftBase();
-
         }
 
         if (collision.gameObject.name == "RightBase")
         {
             destroyRightBase();
+        }
 
+        if (collision.gameObject.tag == "missile")
+        {
+            Destroy(gameObject);
+            Instantiate(explosion, transform.position, transform.rotation);
         }
     }
     private void destroyLeftBase()
