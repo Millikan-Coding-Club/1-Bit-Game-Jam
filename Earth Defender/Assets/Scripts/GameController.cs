@@ -2,6 +2,7 @@ using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.U2D;
@@ -28,6 +29,8 @@ public class GameController : MonoBehaviour
     public AudioSource audioSource;
     public AudioClip SelectClip;
     public AudioClip ReloadClip;
+    public TextMeshProUGUI TimerText;
+    private float time = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -40,6 +43,8 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        time += Time.deltaTime;
+        TimerText.text = "Time Survived: " + string.Format("{0:N2}", time);
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -62,7 +67,6 @@ public class GameController : MonoBehaviour
                         selectedBase = leftBase;
                         selectedBaseStr = "left";
                         audioSource.PlayOneShot(SelectClip, 0.4f);
-
                     }
                 }
 
@@ -97,9 +101,7 @@ public class GameController : MonoBehaviour
         {
             warning.SetActive(true);
             Invoke("deactivateWarning", 3);
-
         }
-
     }
 
     private void deactivateWarning() 

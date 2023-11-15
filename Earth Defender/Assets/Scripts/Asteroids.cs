@@ -81,8 +81,9 @@ public class Asteroids : MonoBehaviour
         if (collision.gameObject.tag == "missile")
         {
             Destroy(gameObject);
-            Instantiate(explosion, transform.position, transform.rotation);
         }
+        Instantiate(explosion, transform.position, transform.rotation);
+
     }
     private void destroyLeftBase()
     {
