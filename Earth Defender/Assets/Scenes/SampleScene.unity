@@ -123,7 +123,7 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &159987734
+--- !u!1 &159987734 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3865731975709097695, guid: 4f5cb115a34fc42ab8b2fd7351d7f183, type: 3}
   m_PrefabInstance: {fileID: 8459209813417092763}
@@ -650,7 +650,7 @@ MonoBehaviour:
   rightBaseSquare: {fileID: 851325240}
   satelliteSquare: {fileID: 561948867}
   nuke: {fileID: 6813819550162170259, guid: cab94f4b6e7202346b937345649fc6a1, type: 3}
-  distance: 10
+  distance: 7
   asteroids:
   - {fileID: 5867217951278066596, guid: f501a3843445aba4da6986088cbed03e, type: 3}
   - {fileID: 1182060902852982233, guid: d178615853ded7e4bbd688a1c0c8e955, type: 3}
@@ -666,7 +666,6 @@ MonoBehaviour:
   - {fileID: 7251485677672878480, guid: a4cf6112a41abac4cbb24da30d31ef1a, type: 3}
   - {fileID: 2722037660454646568, guid: 92df54415569f0b42ae4a24668ecffc6, type: 3}
   - {fileID: 3055242544134557030, guid: e24aeaa6f9457f0439c374aaebff0b27, type: 3}
-  warning: {fileID: 84337073}
   interval: 10
   health: 2
 --- !u!4 &1113147796
@@ -830,7 +829,7 @@ PolygonCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -862,108 +861,6 @@ PolygonCollider2D:
       - {x: 0.61, y: -0.29}
       - {x: 0.72999996, y: -0.17999999}
   m_UseDelaunayMesh: 0
---- !u!1 &1350865686
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1350865690}
-  - component: {fileID: 1350865689}
-  - component: {fileID: 1350865688}
-  - component: {fileID: 1350865687}
-  m_Layer: 5
-  m_Name: Warning Canvas
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1350865687
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1350865686}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_IgnoreReversedGraphics: 1
-  m_BlockingObjects: 0
-  m_BlockingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
---- !u!114 &1350865688
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1350865686}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_UiScaleMode: 1
-  m_ReferencePixelsPerUnit: 100
-  m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 1920, y: 1080}
-  m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
-  m_PhysicalUnit: 3
-  m_FallbackScreenDPI: 96
-  m_DefaultSpriteDPI: 96
-  m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
---- !u!223 &1350865689
-Canvas:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1350865686}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_RenderMode: 1
-  m_Camera: {fileID: 519420031}
-  m_PlaneDistance: 100
-  m_PixelPerfect: 0
-  m_ReceivesEvents: 1
-  m_OverrideSorting: 0
-  m_OverridePixelPerfect: 0
-  m_SortingBucketNormalizedSize: 0
-  m_VertexColorAlwaysGammaSpace: 0
-  m_AdditionalShaderChannelsFlag: 25
-  m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
-  m_TargetDisplay: 0
---- !u!224 &1350865690
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1350865686}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0, y: 0, z: 0}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 84337074}
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0, y: 0}
 --- !u!1 &1637787892
 GameObject:
   m_ObjectHideFlags: 0
@@ -1194,5 +1091,3 @@ SceneRoots:
   - {fileID: 1113147796}
   - {fileID: 1227808518}
   - {fileID: 1202747094}
-  - {fileID: 649680144}
-  - {fileID: 277633187}

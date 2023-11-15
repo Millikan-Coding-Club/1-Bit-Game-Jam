@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5015218066236373761}
   m_Layer: 0
   m_Name: ED_asteroids1_1
-  m_TagString: asteroid
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -103,6 +103,10 @@ MonoBehaviour:
   maxSpeed: 1.5
   maxSpin: 75
   explosion: {fileID: 7778536063406110534, guid: d48c2c4419d00a04bb8c0aef9476ad99, type: 3}
+  leftBase: {fileID: 0}
+  rightBase: {fileID: 0}
+  leftBaseSquare: {fileID: 0}
+  rightBaseSquare: {fileID: 0}
 --- !u!60 &6529960621662030670
 PolygonCollider2D:
   m_ObjectHideFlags: 0
