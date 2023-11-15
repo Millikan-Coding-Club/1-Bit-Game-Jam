@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -2
-  m_Sprite: {fileID: 754617768, guid: 177a1f811a77df94bad873abde17257c, type: 3}
+  m_Sprite: {fileID: 931963709, guid: 177a1f811a77df94bad873abde17257c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -102,6 +102,8 @@ MonoBehaviour:
   explosion: {fileID: 7778536063406110534, guid: d48c2c4419d00a04bb8c0aef9476ad99, type: 3}
   speed: 2.5
   rotateSpeed: 150
+  audioSource: {fileID: 0}
+  MissileClip: {fileID: 8300000, guid: 44309d6f680f74eeaa47e669037e6132, type: 3}
 --- !u!50 &-958315379899246885
 Rigidbody2D:
   serializedVersion: 4

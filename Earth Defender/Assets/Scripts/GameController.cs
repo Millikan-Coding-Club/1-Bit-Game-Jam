@@ -24,7 +24,6 @@ public class GameController : MonoBehaviour
     public float distance = 10;
     public GameObject[] asteroids;
     public GameObject warning;
-    [SerializeField] private float interval = 5f;
     static public int health = 2;
     public AudioSource audioSource;
     public AudioClip SelectClip;
@@ -32,6 +31,7 @@ public class GameController : MonoBehaviour
     public TextMeshProUGUI TimerText;
     private float time = 0;
     private int spawns = 0;
+    public float interval = 3f;
  
     // Start is called before the first frame update
     void Start()
@@ -44,15 +44,13 @@ public class GameController : MonoBehaviour
     void Update()
     {
         time += Time.deltaTime;
-        TimerText.text = "Time Survived: " + string.Format("{0:N2}", time);
-
-
+        TimerText.text = "Time Survived: " + Mathf.RoundToInt(time);
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit2D hit = Physics2D.GetRayIntersection(ray, Mathf.Infinity);
 
-            if (hit.collider == null)
+            if (hit.collider == null || hit.collider.gameObject.tag == "asteroid")
             {
                 fireMissile();
             } else
@@ -97,7 +95,7 @@ public class GameController : MonoBehaviour
 
         // function to spawn asteroid as a function of time.
 
-        if (spawns + 1 < time*5) {
+        if (spawns + 1 < time * interval) {
             spawnAsteroid();
             spawns++;
         }
@@ -106,15 +104,16 @@ public class GameController : MonoBehaviour
     private void fireMissile()
     {
         Vector2 target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Instantiate(crosshair, target, transform.rotation);
         if (selectedBase != null)
         {
             Instantiate(nuke, selectedBase.transform.position, Quaternion.Euler(selectedBase.transform.rotation.eulerAngles - new Vector3(0, 0, 90)));
+            Instantiate(crosshair, target, transform.rotation);
         } else
         {
             warning.SetActive(true);
             Invoke("deactivateWarning", 3);
         }
+        
     }
 
     private void deactivateWarning() 

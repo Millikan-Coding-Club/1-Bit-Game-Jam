@@ -1140,11 +1140,11 @@ MonoBehaviour:
   - {fileID: 2722037660454646568, guid: 92df54415569f0b42ae4a24668ecffc6, type: 3}
   - {fileID: 3055242544134557030, guid: e24aeaa6f9457f0439c374aaebff0b27, type: 3}
   warning: {fileID: 84337073}
-  interval: 10
   audioSource: {fileID: 941067758}
   SelectClip: {fileID: 8300000, guid: 51c5a971e4c29469394f493b1a64cc0c, type: 3}
   ReloadClip: {fileID: 8300000, guid: d9dd303bc32de48d5b15bac30ae3ad66, type: 3}
   TimerText: {fileID: 1473087087}
+  interval: 1
 --- !u!4 &1113147796
 Transform:
   m_ObjectHideFlags: 0
@@ -1576,7 +1576,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -130, y: -110}
+  m_AnchoredPosition: {x: -25, y: -25}
   m_SizeDelta: {x: 400, y: 50}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &1473087087
@@ -1633,8 +1633,8 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 1
-  m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -1813,7 +1813,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a732426e7798949f09041bf35bdecc15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RotationSpeed: 1
+  minSpeed: -5
+  maxSpeed: 5
 --- !u!1 &1741813663
 GameObject:
   m_ObjectHideFlags: 0

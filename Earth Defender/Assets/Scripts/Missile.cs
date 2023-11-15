@@ -13,6 +13,7 @@ public class Missile : MonoBehaviour
     private bool left = false;
     public AudioSource audioSource;
     public AudioClip MissileClip;
+    private bool crosshairHit;
 
     // Start is called before the first frame update
     void Start()
@@ -20,16 +21,24 @@ public class Missile : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         rb.rotation += 90;
-
+        audioSource.PlayOneShot(MissileClip, 0.4f);
+        crosshairHit = false;
     }
 
     private void FixedUpdate()
     {
-        Vector2 direction = target - rb.position;
-        direction.Normalize();
-        float rotateAmount = Vector3.Cross(direction, transform.up).z;
-        rb.angularVelocity = -rotateAmount * rotateSpeed;
-        rb.velocity = transform.up * speed;
+        if (!crosshairHit)
+        {
+            Vector2 direction = target - rb.position;
+            direction.Normalize();
+            float rotateAmount = Vector3.Cross(direction, transform.up).z;
+            rb.angularVelocity = -rotateAmount * rotateSpeed;
+            rb.velocity = transform.up * speed;
+        } else
+        {
+            rb.angularVelocity = 0f;
+        }
+        
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -41,6 +50,10 @@ public class Missile : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.gameObject.tag == "crosshair")
+        {
+            crosshairHit = true;
+        }
         if (collision.gameObject.tag == "asteroid")
         {
             Destroy(gameObject);
@@ -49,5 +62,10 @@ public class Missile : MonoBehaviour
             Destroy(gameObject);
             Instantiate(explosion, transform.position, Quaternion.identity);
         }
+    }
+
+    private void OnBecameInvisible()
+    {
+        Destroy(gameObject);
     }
 }

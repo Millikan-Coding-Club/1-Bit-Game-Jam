@@ -5,11 +5,15 @@ using UnityEngine;
 public class Earth : MonoBehaviour
 {
 
-    public float RotationSpeed;
+    private float RotationSpeed;
+    public float minSpeed = -5f;
+    public float maxSpeed = 5f;
 
     // Start is called before the first frame update
     void Start()
     {
+        RotationSpeed = Random.Range(minSpeed, maxSpeed);
+        Debug.Log(RotationSpeed);
     }
 
     // Update is called once per frame

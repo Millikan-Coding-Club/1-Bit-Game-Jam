@@ -56,8 +56,6 @@ public class Asteroids : MonoBehaviour
 
     void OnTriggerEnter2D(UnityEngine.Collider2D collision)
     {
-        audioSource.Play();
-
         if (collision.gameObject.name == "Earth")
         {
             if (leftBase != null && rightBase != null)
@@ -90,15 +88,20 @@ public class Asteroids : MonoBehaviour
         if (collision.gameObject.tag == "missile")
         {
             Destroy(gameObject);
+            Debug.Log("Asteroid hit");
         }
-        Instantiate(explosion, transform.position, transform.rotation);
 
-        Destroy(this.gameObject);
-
+        if (collision.gameObject.tag != "crosshair")
+        {
+            Instantiate(explosion, transform.position, transform.rotation);
+            Destroy(gameObject);
+            Debug.Log("Asteroid hit");
+            audioSource.Play();
+        }
     }
     private void destroyLeftBase()
     {
-        Destroy(this.gameObject);
+        Destroy(gameObject);
         Destroy(leftBase);
         Destroy(leftBaseSquare);
         Instantiate(explosion, leftBase.transform.position, transform.rotation);
@@ -107,7 +110,7 @@ public class Asteroids : MonoBehaviour
 
     private void destroyRightBase()
     {
-        Destroy(this.gameObject);
+        Destroy(gameObject);
         Destroy(rightBase);
         Destroy(rightBaseSquare);
         Instantiate(explosion, rightBase.transform.position, transform.rotation);
