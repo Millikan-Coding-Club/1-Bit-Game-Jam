@@ -11,12 +11,17 @@ public class Missile : MonoBehaviour
     public float speed = 1f;
     public float rotateSpeed = 10f;
     private bool left = false;
+    public AudioSource audioSource;
+    public AudioClip MissileClip;
+
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         rb.rotation += 90;
+        audioSource.PlayOneShot(MissileClip, 0.4f);
+
     }
 
     private void FixedUpdate()

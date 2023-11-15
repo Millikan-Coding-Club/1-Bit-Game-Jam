@@ -19,6 +19,8 @@ public class Asteroids : MonoBehaviour
     private GameObject rightBase;
     private GameObject leftBaseSquare;
     private GameObject rightBaseSquare;
+    public AudioSource audioSource;
+    public AudioClip CollisionClip;
 
     // Start is called before the first frame update
     void Start()
@@ -42,6 +44,8 @@ public class Asteroids : MonoBehaviour
 
     void OnTriggerEnter2D(UnityEngine.Collider2D collision)
     {
+        audioSource.Play();
+
         if (collision.gameObject.name == "Earth")
         {
             Destroy(this.gameObject);

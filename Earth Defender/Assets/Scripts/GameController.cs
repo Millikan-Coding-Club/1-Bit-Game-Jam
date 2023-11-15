@@ -25,11 +25,16 @@ public class GameController : MonoBehaviour
     public GameObject warning;
     [SerializeField] private float interval = 5f;
     static public int health = 2;
+    public AudioSource audioSource;
+    public AudioClip SelectClip;
+    public AudioClip ReloadClip;
+
     // Start is called before the first frame update
     void Start()
     {
         InvokeRepeating("spawnAsteroid", 0, interval);
-        selectedBaseStr = "right";
+        selectedBaseStr = "";
+
     }
 
     // Update is called once per frame
@@ -51,19 +56,25 @@ public class GameController : MonoBehaviour
                 }
                 if (leftBase != null)
                 {
-                    if (hit.collider.transform == leftBaseSquare.transform)
+                    if (hit.collider.transform == leftBaseSquare.transform
+                        && !selectedBaseStr.Equals("left"))
                     {
                         selectedBase = leftBase;
                         selectedBaseStr = "left";
+                        audioSource.PlayOneShot(SelectClip, 0.4f);
+
                     }
                 }
 
                 if (rightBase != null)
                 {
-                    if (hit.collider.transform == rightBaseSquare.transform)
+                    if (hit.collider.transform == rightBaseSquare.transform
+                        && !selectedBaseStr.Equals("right"))
                     {
                         selectedBase = rightBase;
                         selectedBaseStr = "right";
+                        audioSource.PlayOneShot(SelectClip, 0.4f);
+
                     }
                 }
             }
@@ -86,6 +97,7 @@ public class GameController : MonoBehaviour
         {
             warning.SetActive(true);
             Invoke("deactivateWarning", 3);
+
         }
 
     }
