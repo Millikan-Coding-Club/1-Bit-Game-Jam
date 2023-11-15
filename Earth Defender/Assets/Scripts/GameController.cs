@@ -9,6 +9,7 @@ using UnityEngine.UIElements;
 
 public class GameController : MonoBehaviour
 {
+
     public GameObject crosshair;
     public GameObject leftBase;
     public GameObject rightBase;
@@ -17,6 +18,8 @@ public class GameController : MonoBehaviour
     public GameObject satelliteSquare;
     public GameObject nuke;
     private GameObject selectedBase;
+    public static string selectedBaseStr;
+
     public float distance = 10;
     public GameObject[] asteroids;
     public GameObject warning;
@@ -26,6 +29,7 @@ public class GameController : MonoBehaviour
     void Start()
     {
         InvokeRepeating("spawnAsteroid", 0, interval);
+        selectedBaseStr = "right";
     }
 
     // Update is called once per frame
@@ -50,6 +54,7 @@ public class GameController : MonoBehaviour
                     if (hit.collider.transform == leftBaseSquare.transform)
                     {
                         selectedBase = leftBase;
+                        selectedBaseStr = "left";
                     }
                 }
 
@@ -58,6 +63,7 @@ public class GameController : MonoBehaviour
                     if (hit.collider.transform == rightBaseSquare.transform)
                     {
                         selectedBase = rightBase;
+                        selectedBaseStr = "right";
                     }
                 }
             }
