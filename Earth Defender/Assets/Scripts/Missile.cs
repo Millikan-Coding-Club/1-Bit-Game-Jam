@@ -20,7 +20,6 @@ public class Missile : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         rb.rotation += 90;
-        audioSource.PlayOneShot(MissileClip, 0.4f);
 
     }
 

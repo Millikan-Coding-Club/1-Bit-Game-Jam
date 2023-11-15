@@ -31,11 +31,11 @@ public class GameController : MonoBehaviour
     public AudioClip ReloadClip;
     public TextMeshProUGUI TimerText;
     private float time = 0;
-
+    private int spawns = 0;
+ 
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("spawnAsteroid", 0, interval);
         selectedBaseStr = "";
 
     }
@@ -45,6 +45,8 @@ public class GameController : MonoBehaviour
     {
         time += Time.deltaTime;
         TimerText.text = "Time Survived: " + string.Format("{0:N2}", time);
+
+
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -88,6 +90,17 @@ public class GameController : MonoBehaviour
         {
             gameOver();
         }
+
+
+
+
+
+        // function to spawn asteroid as a function of time.
+
+        if (spawns + 1 < time*5) {
+            spawnAsteroid();
+            spawns++;
+        }
     }
 
     private void fireMissile()
@@ -114,7 +127,7 @@ public class GameController : MonoBehaviour
         float angle = Random.Range(0f, 2 * Mathf.PI);
         float x = Mathf.Cos(angle) * distance * 1.75f;
         float y = Mathf.Sin(angle) * distance;
-        Instantiate(asteroids[Random.Range(0, 13)], new Vector3(x, y, 0), transform.rotation);
+        GameObject obj = Instantiate(asteroids[Random.Range(0, 13)], new Vector3(x, y, 0), transform.rotation);
     }
 
     private void gameOver()

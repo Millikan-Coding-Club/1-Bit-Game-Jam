@@ -9,12 +9,18 @@ public class Asteroids : MonoBehaviour
 {
     [SerializeField] private float minSpeed = 0.01f;
     [SerializeField] private float maxSpeed = 3f;
+    [SerializeField] private float minScale = 0.5f;
+    [SerializeField] private float maxScale = .8f;
     [SerializeField] private float maxSpin = 80f;
+
     [SerializeField] private GameObject explosion;
     private float speed;
     private float rotationSpeed;
     private float targetX;
     private float targetY;
+    private Vector2 target;
+    private float scale;
+
     private GameObject leftBase;
     private GameObject rightBase;
     private GameObject leftBaseSquare;
@@ -27,18 +33,24 @@ public class Asteroids : MonoBehaviour
     {
         rotationSpeed = Random.Range(maxSpin * -1, maxSpin);
         speed = Random.Range(minSpeed, maxSpeed);
-        targetX = Random.Range(-1.4f, 1.4f);
-        targetY = Random.Range(-1.4f, 1.4f);
+        //targetX = Random.Range(0, 1.4f);
+        //targetY = Random.Range(-1.4f, 1.4f);
+        target = Camera.main.ViewportToWorldPoint(new Vector2(Random.value, Random.value));
+
+        scale = Random.Range(minScale, maxScale);
         leftBase = GameObject.Find("LeftBase");
         rightBase = GameObject.Find("RightBase");
         leftBaseSquare = GameObject.Find("leftBaseSquare");
         rightBaseSquare = GameObject.Find("rightBaseSquare");
+        transform.localScale = new Vector2(scale, scale);
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.position = Vector2.MoveTowards(transform.position, new Vector2(targetX, targetY), speed * Time.deltaTime);
+
+        transform.position = Vector2.MoveTowards(transform.position, target, speed * Time.deltaTime);
         transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles + new Vector3(0, 0, rotationSpeed * Time.deltaTime));
     }
 
@@ -48,7 +60,6 @@ public class Asteroids : MonoBehaviour
 
         if (collision.gameObject.name == "Earth")
         {
-            Destroy(this.gameObject);
             if (leftBase != null && rightBase != null)
             {
                 if (Vector3.Distance(rightBase.transform.position, transform.position) > Vector3.Distance(leftBase.transform.position, transform.position))
@@ -59,21 +70,19 @@ public class Asteroids : MonoBehaviour
                 {
                     destroyRightBase();
                 }
-            } else if (leftBase == null)
-            {
+            } else if (leftBase == null && rightBase != null) {
+            
                 destroyRightBase();
-            } else
-            {
+            } else if (leftBase != null && rightBase == null) {
                 destroyLeftBase();
             }
         }
 
-        if (collision.gameObject.name == "LeftBase")
-        {
+        if (collision.gameObject.name == "LeftBase" && leftBase != null) {
             destroyLeftBase();
         }
 
-        if (collision.gameObject.name == "RightBase")
+        if (collision.gameObject.name == "RightBase" && rightBase != null)
         {
             destroyRightBase();
         }
@@ -83,6 +92,8 @@ public class Asteroids : MonoBehaviour
             Destroy(gameObject);
         }
         Instantiate(explosion, transform.position, transform.rotation);
+
+        Destroy(this.gameObject);
 
     }
     private void destroyLeftBase()
