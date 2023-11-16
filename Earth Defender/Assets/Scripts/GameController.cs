@@ -29,22 +29,34 @@ public class GameController : MonoBehaviour
     public AudioClip SelectClip;
     public AudioClip ReloadClip;
     public TextMeshProUGUI TimerText;
-    private float time = 0;
+    static public float time = 0;
     private int spawns = 0;
     public float interval = 3f;
+    public float cooldown = 1f;
+    private float count = 0f;
  
     // Start is called before the first frame update
     void Start()
     {
         selectedBaseStr = "";
-
     }
 
     // Update is called once per frame
     void Update()
     {
         time += Time.deltaTime;
+        count += Time.deltaTime;
         TimerText.text = "Time Survived: " + Mathf.RoundToInt(time);
+
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            selectBase(leftBase, "left");
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            selectBase(rightBase, "right");
+        }
+
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -52,7 +64,10 @@ public class GameController : MonoBehaviour
 
             if (hit.collider == null || hit.collider.gameObject.tag == "asteroid")
             {
-                fireMissile();
+                if (count > cooldown)
+                {
+                    fireMissile();
+                }
             } else
             {
                 if (hit.collider.transform == satelliteSquare.transform)
@@ -64,9 +79,7 @@ public class GameController : MonoBehaviour
                     if (hit.collider.transform == leftBaseSquare.transform
                         && !selectedBaseStr.Equals("left"))
                     {
-                        selectedBase = leftBase;
-                        selectedBaseStr = "left";
-                        audioSource.PlayOneShot(SelectClip, 0.4f);
+                        selectBase(leftBase, "left");
                     }
                 }
 
@@ -75,9 +88,7 @@ public class GameController : MonoBehaviour
                     if (hit.collider.transform == rightBaseSquare.transform
                         && !selectedBaseStr.Equals("right"))
                     {
-                        selectedBase = rightBase;
-                        selectedBaseStr = "right";
-                        audioSource.PlayOneShot(SelectClip, 0.4f);
+                        selectBase(rightBase, "right");
 
                     }
                 }
@@ -89,10 +100,6 @@ public class GameController : MonoBehaviour
             gameOver();
         }
 
-
-
-
-
         // function to spawn asteroid as a function of time.
 
         if (spawns + 1 < time * interval) {
@@ -101,8 +108,19 @@ public class GameController : MonoBehaviour
         }
     }
 
+    private void selectBase(GameObject baseToSelect, string baseStr)
+    {
+        if (baseToSelect != null)
+        {
+            selectedBase = baseToSelect;
+            selectedBaseStr = baseStr;
+            audioSource.PlayOneShot(SelectClip, 0.4f);
+        }
+    }
+
     private void fireMissile()
     {
+        count = 0f;
         Vector2 target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         if (selectedBase != null)
         {

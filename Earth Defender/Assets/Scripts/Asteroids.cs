@@ -27,6 +27,8 @@ public class Asteroids : MonoBehaviour
     private GameObject rightBaseSquare;
     public AudioSource audioSource;
     public AudioClip CollisionClip;
+    private float startTime;
+    private bool visible = false;
 
     // Start is called before the first frame update
     void Start()
@@ -35,7 +37,7 @@ public class Asteroids : MonoBehaviour
         speed = Random.Range(minSpeed, maxSpeed);
         //targetX = Random.Range(0, 1.4f);
         //targetY = Random.Range(-1.4f, 1.4f);
-        target = Camera.main.ViewportToWorldPoint(new Vector2(Random.value, Random.value));
+        target = Camera.main.ViewportToWorldPoint(new Vector2(Random.value * 2, Random.value * 1));
 
         scale = Random.Range(minScale, maxScale);
         leftBase = GameObject.Find("LeftBase");
@@ -43,18 +45,31 @@ public class Asteroids : MonoBehaviour
         leftBaseSquare = GameObject.Find("leftBaseSquare");
         rightBaseSquare = GameObject.Find("rightBaseSquare");
         transform.localScale = new Vector2(scale, scale);
+        startTime = GameController.time;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (GameController.time > startTime + 10f && !visible)
+        {
+            // destroy if 10 seconds have elapsed
+            Destroy(gameObject);
+        }
+        if (Mathf.Abs(target.x) < 11)
+        {
+            target.x *= 2;
+        }
+        if (Mathf.Abs(target.y) < 6)
+        {
+            target.y *= 2;
+        }
         transform.position = Vector2.MoveTowards(transform.position, target, speed * Time.deltaTime);
         transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles + new Vector3(0, 0, rotationSpeed * Time.deltaTime));
     }
 
     void OnTriggerEnter2D(UnityEngine.Collider2D collision)
     {
-        Debug.Log(collision.tag);
         if (collision.gameObject.name == "Earth")
         {
             if (leftBase != null && rightBase != null)
@@ -95,6 +110,18 @@ public class Asteroids : MonoBehaviour
             Destroy(gameObject);
             audioSource.Play();
         }
+    }
+
+    private void OnBecameVisible()
+    {
+        visible = true;
+    }
+
+    private void OnBecameInvisible()
+    {
+        // destroy if asteroid leaves camera
+        Destroy(gameObject);
+        visible = false;
     }
     private void destroyLeftBase()
     {

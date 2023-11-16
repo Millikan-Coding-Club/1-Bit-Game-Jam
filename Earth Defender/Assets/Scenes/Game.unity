@@ -563,7 +563,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 6
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1123,7 +1123,7 @@ MonoBehaviour:
   rightBaseSquare: {fileID: 991285637}
   satelliteSquare: {fileID: 561948867}
   nuke: {fileID: 6813819550162170259, guid: cab94f4b6e7202346b937345649fc6a1, type: 3}
-  distance: 7
+  distance: 8
   asteroids:
   - {fileID: 5867217951278066596, guid: f501a3843445aba4da6986088cbed03e, type: 3}
   - {fileID: 1182060902852982233, guid: d178615853ded7e4bbd688a1c0c8e955, type: 3}
@@ -1145,6 +1145,7 @@ MonoBehaviour:
   ReloadClip: {fileID: 8300000, guid: d9dd303bc32de48d5b15bac30ae3ad66, type: 3}
   TimerText: {fileID: 1473087087}
   interval: 1
+  cooldown: 1
 --- !u!4 &1113147796
 Transform:
   m_ObjectHideFlags: 0
