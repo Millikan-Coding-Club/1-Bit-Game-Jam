@@ -18,6 +18,9 @@ public class GameController : MonoBehaviour
     public GameObject rightBaseSquare;
     public GameObject satelliteSquare;
     public GameObject nuke;
+    public GameObject earth;
+    public GameObject explosion;
+
     private GameObject selectedBase;
     public static string selectedBaseStr;
 
@@ -36,79 +39,83 @@ public class GameController : MonoBehaviour
     public float InitialDifficulty = 1f;
     public float DifficultyIncreasePerMin = 1f;
     static public float difficulty = 1f;
- 
+
+    public GameObject gameOverCanvas;
+    public TextMeshProUGUI surviveText;
+
+    bool isGameOver = false;
+
     // Start is called before the first frame update
     void Start()
     {
         selectedBaseStr = "";
         difficulty = InitialDifficulty;
+        gameOverCanvas.SetActive(false);
+        isGameOver = false;
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        difficulty += Time.deltaTime / (60 / DifficultyIncreasePerMin);
-        time += Time.deltaTime;
-        count += Time.deltaTime;
-        TimerText.text = "Time Survived: " + Mathf.RoundToInt(time);
+    void Update() {
+        if (!isGameOver) {
+            difficulty += Time.deltaTime / (60 / DifficultyIncreasePerMin);
+            time += Time.deltaTime;
+            count += Time.deltaTime;
+            TimerText.text = "Time Survived: " + Mathf.RoundToInt(time);
 
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            selectBase(leftBase, "left");
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            selectBase(rightBase, "right");
-        }
+            if (Input.GetKeyDown(KeyCode.Alpha1)) {
+                selectBase(leftBase, "left");
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha2)) {
+                selectBase(rightBase, "right");
+            }
 
-        if (Input.GetKeyDown(KeyCode.Mouse0))
-        {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit2D hit = Physics2D.GetRayIntersection(ray, Mathf.Infinity);
+            if (Input.GetKeyDown(KeyCode.Mouse0)) {
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                RaycastHit2D hit = Physics2D.GetRayIntersection(ray, Mathf.Infinity);
 
-            if (hit.collider == null || hit.collider.gameObject.tag == "asteroid")
-            {
-                if (count > cooldown)
-                {
-                    fireMissile();
-                }
-            } else
-            {
-                if (hit.collider.transform == satelliteSquare.transform)
-                {
-                    Debug.Log("satellite");
-                }
-                if (leftBase != null)
-                {
-                    if (hit.collider.transform == leftBaseSquare.transform
-                        && !selectedBaseStr.Equals("left"))
-                    {
-                        selectBase(leftBase, "left");
+                if (hit.collider == null || hit.collider.gameObject.tag == "asteroid") {
+                    if (count > cooldown) {
+                        fireMissile();
                     }
                 }
+                else {
+                    if (hit.collider.transform == satelliteSquare.transform) {
+                        Debug.Log("satellite");
+                    }
+                    if (leftBase != null) {
+                        if (hit.collider.transform == leftBaseSquare.transform
+                            && !selectedBaseStr.Equals("left")) {
+                            selectBase(leftBase, "left");
+                        }
+                    }
 
-                if (rightBase != null)
-                {
-                    if (hit.collider.transform == rightBaseSquare.transform
-                        && !selectedBaseStr.Equals("right"))
-                    {
-                        selectBase(rightBase, "right");
+                    if (rightBase != null) {
+                        if (hit.collider.transform == rightBaseSquare.transform
+                            && !selectedBaseStr.Equals("right")) {
+                            selectBase(rightBase, "right");
 
+                        }
                     }
                 }
             }
-        }
 
-        if (health == 0)
-        {
-            gameOver();
-        }
+            if (health == 0) {
+                isGameOver = true;
+                earth.SetActive(false);
+                GameObject obj = Instantiate(explosion, new Vector2(0, 0), transform.rotation);
+                obj.transform.localScale = new Vector2(6, 6);
 
-        // function to spawn asteroid as a function of time.
 
-        if (spawns + 1 < time * difficulty) {
-            spawnAsteroid();
-            spawns++;
+                Invoke("gameOver", 2);
+
+            }
+
+            // function to spawn asteroid as a function of time.
+
+            if (spawns + 1 < time * difficulty) {
+                spawnAsteroid();
+                spawns++;
+            }
         }
     }
 
@@ -153,7 +160,9 @@ public class GameController : MonoBehaviour
 
     private void gameOver()
     {
-        // TODO
-        Debug.Log("Game Over");
+
+        surviveText.text = "You Survived: " + Mathf.RoundToInt(time);
+        TimerText.gameObject.SetActive(false);
+        gameOverCanvas.SetActive(true);
     }
 }
