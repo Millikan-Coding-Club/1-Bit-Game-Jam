@@ -7,8 +7,8 @@ using UnityEngine;
 
 public class Asteroids : MonoBehaviour
 {
-    [SerializeField] private float minSpeed = 0.01f;
-    [SerializeField] private float maxSpeed = 3f;
+    private float minSpeed = 0.01f * GameController.difficulty;
+    private float maxSpeed = 1 + 0.5f * GameController.difficulty;
     [SerializeField] private float minScale = 0.5f;
     [SerializeField] private float maxScale = .8f;
     [SerializeField] private float maxSpin = 80f;
@@ -16,8 +16,6 @@ public class Asteroids : MonoBehaviour
     [SerializeField] private GameObject explosion;
     private float speed;
     private float rotationSpeed;
-    private float targetX;
-    private float targetY;
     private Vector2 target;
     private float scale;
 
@@ -25,18 +23,15 @@ public class Asteroids : MonoBehaviour
     private GameObject rightBase;
     private GameObject leftBaseSquare;
     private GameObject rightBaseSquare;
-    public AudioSource audioSource;
-    public AudioClip CollisionClip;
     private float startTime;
     private bool visible = false;
 
     // Start is called before the first frame update
     void Start()
     {
+
         rotationSpeed = Random.Range(maxSpin * -1, maxSpin);
         speed = Random.Range(minSpeed, maxSpeed);
-        //targetX = Random.Range(0, 1.4f);
-        //targetY = Random.Range(-1.4f, 1.4f);
         target = Camera.main.ViewportToWorldPoint(new Vector2(Random.value * 2, Random.value * 1));
 
         scale = Random.Range(minScale, maxScale);
@@ -101,14 +96,14 @@ public class Asteroids : MonoBehaviour
 
         if (collision.gameObject.tag == "missile")
         {
+            Instantiate(explosion, transform.position, transform.rotation);
             Destroy(gameObject);
         }
 
-        if (collision.gameObject.tag != "crosshair" && collision.gameObject.tag != "square")
+        if (collision.gameObject.tag != "crosshair" && collision.gameObject.tag != "square" && visible)
         {
             Instantiate(explosion, transform.position, transform.rotation);
             Destroy(gameObject);
-            audioSource.Play();
         }
     }
 

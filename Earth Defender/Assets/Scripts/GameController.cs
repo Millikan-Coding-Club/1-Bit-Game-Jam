@@ -31,19 +31,23 @@ public class GameController : MonoBehaviour
     public TextMeshProUGUI TimerText;
     static public float time = 0;
     private int spawns = 0;
-    public float interval = 3f;
     public float cooldown = 1f;
     private float count = 0f;
+    public float InitialDifficulty = 1f;
+    public float DifficultyIncreasePerMin = 1f;
+    static public float difficulty = 1f;
  
     // Start is called before the first frame update
     void Start()
     {
         selectedBaseStr = "";
+        difficulty = InitialDifficulty;
     }
 
     // Update is called once per frame
     void Update()
     {
+        difficulty += Time.deltaTime / (60 / DifficultyIncreasePerMin);
         time += Time.deltaTime;
         count += Time.deltaTime;
         TimerText.text = "Time Survived: " + Mathf.RoundToInt(time);
@@ -102,7 +106,7 @@ public class GameController : MonoBehaviour
 
         // function to spawn asteroid as a function of time.
 
-        if (spawns + 1 < time * interval) {
+        if (spawns + 1 < time * difficulty) {
             spawnAsteroid();
             spawns++;
         }
