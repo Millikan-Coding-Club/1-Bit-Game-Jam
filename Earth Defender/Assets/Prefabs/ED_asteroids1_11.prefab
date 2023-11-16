@@ -102,6 +102,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minSpeed: 0.05
   maxSpeed: 1.5
+  minScale: 0.5
+  maxScale: 0.8
   maxSpin: 75
   explosion: {fileID: 7778536063406110534, guid: d48c2c4419d00a04bb8c0aef9476ad99, type: 3}
   audioSource: {fileID: 7438930590076677952}

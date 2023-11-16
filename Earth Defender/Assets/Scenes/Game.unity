@@ -272,7 +272,7 @@ GameObject:
   - component: {fileID: 159987739}
   m_Layer: 0
   m_Name: leftBaseSquare
-  m_TagString: Untagged
+  m_TagString: square
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -563,7 +563,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 7
+  orthographic size: 5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -607,7 +607,7 @@ GameObject:
   - component: {fileID: 561948870}
   m_Layer: 0
   m_Name: satelliteSquare
-  m_TagString: Untagged
+  m_TagString: square
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -936,7 +936,7 @@ GameObject:
   - component: {fileID: 991285642}
   m_Layer: 0
   m_Name: rightBaseSquare
-  m_TagString: Untagged
+  m_TagString: square
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1123,7 +1123,7 @@ MonoBehaviour:
   rightBaseSquare: {fileID: 991285637}
   satelliteSquare: {fileID: 561948867}
   nuke: {fileID: 6813819550162170259, guid: cab94f4b6e7202346b937345649fc6a1, type: 3}
-  distance: 10
+  distance: 7
   asteroids:
   - {fileID: 5867217951278066596, guid: f501a3843445aba4da6986088cbed03e, type: 3}
   - {fileID: 1182060902852982233, guid: d178615853ded7e4bbd688a1c0c8e955, type: 3}

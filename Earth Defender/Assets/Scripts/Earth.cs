@@ -13,7 +13,6 @@ public class Earth : MonoBehaviour
     void Start()
     {
         RotationSpeed = Random.Range(minSpeed, maxSpeed);
-        Debug.Log(RotationSpeed);
     }
 
     // Update is called once per frame

@@ -43,19 +43,18 @@ public class Asteroids : MonoBehaviour
         leftBaseSquare = GameObject.Find("leftBaseSquare");
         rightBaseSquare = GameObject.Find("rightBaseSquare");
         transform.localScale = new Vector2(scale, scale);
-
     }
 
     // Update is called once per frame
     void Update()
     {
-
         transform.position = Vector2.MoveTowards(transform.position, target, speed * Time.deltaTime);
         transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles + new Vector3(0, 0, rotationSpeed * Time.deltaTime));
     }
 
     void OnTriggerEnter2D(UnityEngine.Collider2D collision)
     {
+        Debug.Log(collision.tag);
         if (collision.gameObject.name == "Earth")
         {
             if (leftBase != null && rightBase != null)
@@ -88,14 +87,12 @@ public class Asteroids : MonoBehaviour
         if (collision.gameObject.tag == "missile")
         {
             Destroy(gameObject);
-            Debug.Log("Asteroid hit");
         }
 
-        if (collision.gameObject.tag != "crosshair")
+        if (collision.gameObject.tag != "crosshair" && collision.gameObject.tag != "square")
         {
             Instantiate(explosion, transform.position, transform.rotation);
             Destroy(gameObject);
-            Debug.Log("Asteroid hit");
             audioSource.Play();
         }
     }

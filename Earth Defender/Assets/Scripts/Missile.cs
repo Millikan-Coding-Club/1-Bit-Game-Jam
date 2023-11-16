@@ -45,8 +45,7 @@ public class Missile : MonoBehaviour
     {
         if (collision.gameObject.name == "Earth")
         {
-            left = true;
-        }
+            left = true;        }
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -57,7 +56,7 @@ public class Missile : MonoBehaviour
         if (collision.gameObject.tag == "asteroid")
         {
             Destroy(gameObject);
-        } else if (left == true && collision.gameObject.tag != "crosshair")
+        } else if (left == true && collision.gameObject.tag != "crosshair" && collision.gameObject.tag != "square")
         {
             Destroy(gameObject);
             Instantiate(explosion, transform.position, Quaternion.identity);
