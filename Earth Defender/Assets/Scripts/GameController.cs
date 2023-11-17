@@ -170,6 +170,7 @@ public class GameController : MonoBehaviour
     public void startGame()
     {
         startCanvas.SetActive(false);
+        TimerText.gameObject.SetActive(true);
         Time.timeScale = 1f;
     }
     public void restart()
