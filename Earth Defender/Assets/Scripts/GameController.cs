@@ -5,6 +5,7 @@ using System.Runtime.CompilerServices;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.U2D;
 using UnityEngine.UIElements;
 
@@ -42,6 +43,7 @@ public class GameController : MonoBehaviour
 
     public GameObject gameOverCanvas;
     public TextMeshProUGUI surviveText;
+    public GameObject startCanvas;
 
     bool isGameOver = false;
 
@@ -52,6 +54,7 @@ public class GameController : MonoBehaviour
         difficulty = InitialDifficulty;
         gameOverCanvas.SetActive(false);
         isGameOver = false;
+        Time.timeScale = 0f;
     }
 
     // Update is called once per frame
@@ -105,8 +108,7 @@ public class GameController : MonoBehaviour
                 GameObject obj = Instantiate(explosion, new Vector2(0, 0), transform.rotation);
                 obj.transform.localScale = new Vector2(6, 6);
 
-
-                Invoke("gameOver", 2);
+                Invoke("gameOver", 0.5f);
 
             }
 
@@ -160,9 +162,24 @@ public class GameController : MonoBehaviour
 
     private void gameOver()
     {
-
         surviveText.text = "You Survived: " + Mathf.RoundToInt(time);
         TimerText.gameObject.SetActive(false);
         gameOverCanvas.SetActive(true);
+    }
+
+    public void startGame()
+    {
+        startCanvas.SetActive(false);
+        Time.timeScale = 1f;
+    }
+    public void restart()
+    {
+        time = 0;
+        health = 2;
+        difficulty = InitialDifficulty;
+        isGameOver = false;
+        TimerText.gameObject.SetActive(true);
+        SceneManager.LoadScene("Game");
+        Time.timeScale = 0;
     }
 }
