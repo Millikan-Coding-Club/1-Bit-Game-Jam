@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Earth : MonoBehaviour
 {
-
+    public GameObject CircleCanvas;
     private float RotationSpeed;
     public float minSpeed = -5f;
     public float maxSpeed = 5f;
@@ -21,5 +21,6 @@ public class Earth : MonoBehaviour
         float rotAmount = RotationSpeed * Time.deltaTime;
         float curRot = transform.localRotation.eulerAngles.z;
         transform.localRotation = Quaternion.Euler(new Vector3(0, 0, curRot + rotAmount));
+        CircleCanvas.transform.localRotation = Quaternion.Euler(new Vector3(0, 0, curRot + rotAmount));
     }
 }

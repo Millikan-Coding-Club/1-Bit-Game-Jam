@@ -21,6 +21,7 @@ public class GameController : MonoBehaviour
     public GameObject nuke;
     public GameObject earth;
     public GameObject explosion;
+    public GameObject bg;
 
     private GameObject selectedBase;
     public static string selectedBaseStr;
@@ -35,8 +36,8 @@ public class GameController : MonoBehaviour
     public TextMeshProUGUI TimerText;
     static public float time = 0;
     private int spawns = 0;
-    public float cooldown = 1f;
-    private float count = 0f;
+    static public float cooldown = 1f;
+    static public float count = 1f;
     public float InitialDifficulty = 1f;
     public float DifficultyIncreasePerMin = 1f;
     static public float difficulty = 1f;
@@ -45,16 +46,18 @@ public class GameController : MonoBehaviour
     public TextMeshProUGUI surviveText;
     public GameObject startCanvas;
 
-    bool isGameOver = false;
+    bool isGameOver;
 
     // Start is called before the first frame update
     void Start()
     {
+        Time.timeScale = 0f;
+        Background.x = Random.Range(-1f, 1f);
+        Background.y = Random.Range(-1f, 1f);
         selectedBaseStr = "";
         difficulty = InitialDifficulty;
         gameOverCanvas.SetActive(false);
         isGameOver = false;
-        Time.timeScale = 0f;
     }
 
     // Update is called once per frame
@@ -62,7 +65,13 @@ public class GameController : MonoBehaviour
         if (!isGameOver) {
             difficulty += Time.deltaTime / (60 / DifficultyIncreasePerMin);
             time += Time.deltaTime;
-            count += Time.deltaTime;
+            if (count < cooldown)
+            {
+                count += Time.deltaTime;
+            } else
+            {
+                count = cooldown;
+            }
             TimerText.text = "Time Survived: " + Mathf.RoundToInt(time);
 
             if (Input.GetKeyDown(KeyCode.Alpha1)) {
@@ -77,7 +86,7 @@ public class GameController : MonoBehaviour
                 RaycastHit2D hit = Physics2D.GetRayIntersection(ray, Mathf.Infinity);
 
                 if (hit.collider == null || hit.collider.gameObject.tag == "asteroid") {
-                    if (count > cooldown) {
+                    if (count >= cooldown && !startCanvas.activeInHierarchy) {
                         fireMissile();
                     }
                 }
@@ -172,6 +181,11 @@ public class GameController : MonoBehaviour
         startCanvas.SetActive(false);
         TimerText.gameObject.SetActive(true);
         Time.timeScale = 1f;
+    }
+
+    public void quickGame()
+    {
+        Application.Quit();
     }
     public void restart()
     {

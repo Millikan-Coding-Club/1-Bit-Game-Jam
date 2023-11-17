@@ -44,7 +44,8 @@ public class Missile : MonoBehaviour
     {
         if (collision.gameObject.name == "Earth")
         {
-            left = true;        }
+            left = true;
+        }
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {

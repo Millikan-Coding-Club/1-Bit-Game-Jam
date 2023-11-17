@@ -9,6 +9,7 @@ TagManager:
   - asteroid
   - crosshair
   - square
+  - background
   layers:
   - Default
   - TransparentFX
