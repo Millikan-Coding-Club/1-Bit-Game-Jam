@@ -91,9 +91,6 @@ public class GameController : MonoBehaviour
                     }
                 }
                 else {
-                    if (hit.collider.transform == satelliteSquare.transform) {
-                        Debug.Log("satellite");
-                    }
                     if (leftBase != null) {
                         if (hit.collider.transform == leftBaseSquare.transform
                             && !selectedBaseStr.Equals("left")) {
@@ -174,6 +171,7 @@ public class GameController : MonoBehaviour
         surviveText.text = "You Survived: " + Mathf.RoundToInt(time);
         TimerText.gameObject.SetActive(false);
         gameOverCanvas.SetActive(true);
+        Time.timeScale = 0f;
     }
 
     public void startGame()

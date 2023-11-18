@@ -4,15 +4,27 @@ using UnityEngine;
 
 public class Satellite : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public GameObject explosion;
+    public float maxSpeed = 10f;
+    private float rotateSpeed;
+
+    private void Start()
     {
-        
+        rotateSpeed = Random.Range(-maxSpeed, maxSpeed);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        transform.RotateAround(new Vector3(0, 0, 0), new Vector3(0, 0, 1), Time.deltaTime * rotateSpeed);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "asteroid")
+        {
+            Instantiate(explosion, transform.position, Quaternion.identity);
+            Destroy(gameObject);
+        }
     }
 }
