@@ -65,7 +65,7 @@ public class GameController : MonoBehaviour
     void Update() {
         if (!isGameOver) {
             difficulty += Time.deltaTime / (60 / DifficultyIncreasePerMin);
-            cooldown = 1 + difficulty / 100;
+            cooldown = 1 - difficulty / 100;
             time += Time.deltaTime;
             if (count < cooldown)
             {
