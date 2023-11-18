@@ -13,7 +13,7 @@ public class Background : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        background.uvRect = new Rect(background.uvRect.position + new Vector2(x, y) * Time.deltaTime * maxBGSpeed, background.uvRect.size);
+        background.uvRect = new Rect(background.uvRect.position + new Vector2(x, y) * Time.fixedDeltaTime * maxBGSpeed, background.uvRect.size);
     }
 
 }

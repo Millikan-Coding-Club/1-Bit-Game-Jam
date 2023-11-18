@@ -7,8 +7,10 @@ using UnityEngine;
 
 public class Asteroids : MonoBehaviour
 {
-    private float minSpeed = 0.01f * GameController.difficulty;
-    private float maxSpeed = 1 + 0.5f * GameController.difficulty;
+    private float minSpeed;
+    private float maxSpeed;
+    public float speedMinMult = 0.01f;
+    public float speedMaxMult = 0.5f;
     [SerializeField] private float minScale = 0.5f;
     [SerializeField] private float maxScale = .8f;
     [SerializeField] private float maxSpin = 80f;
@@ -23,14 +25,17 @@ public class Asteroids : MonoBehaviour
     private GameObject rightBase;
     private GameObject leftBaseSquare;
     private GameObject rightBaseSquare;
+    private GameObject leftCircle;
+    private GameObject rightCircle;
     private float startTime;
     private bool visible = false;
 
     // Start is called before the first frame update
     void Start()
     {
-
         rotationSpeed = Random.Range(maxSpin * -1, maxSpin);
+        minSpeed = speedMinMult * GameController.difficulty;
+        maxSpeed = speedMaxMult * GameController.difficulty;
         speed = Random.Range(minSpeed, maxSpeed);
         target = Camera.main.ViewportToWorldPoint(new Vector2(Random.value * 2, Random.value * 1));
 
@@ -39,6 +44,8 @@ public class Asteroids : MonoBehaviour
         rightBase = GameObject.Find("RightBase");
         leftBaseSquare = GameObject.Find("leftBaseSquare");
         rightBaseSquare = GameObject.Find("rightBaseSquare");
+        leftCircle = GameObject.Find("LeftCircle");
+        rightCircle = GameObject.Find("RightCircle");
         transform.localScale = new Vector2(scale, scale);
         startTime = GameController.time;
     }
@@ -123,6 +130,7 @@ public class Asteroids : MonoBehaviour
         Destroy(gameObject);
         Destroy(leftBase);
         Destroy(leftBaseSquare);
+        Destroy(leftCircle);
         Instantiate(explosion, leftBase.transform.position, transform.rotation);
         GameController.health -= 1;
     }
@@ -132,6 +140,7 @@ public class Asteroids : MonoBehaviour
         Destroy(gameObject);
         Destroy(rightBase);
         Destroy(rightBaseSquare);
+        Destroy(rightCircle);
         Instantiate(explosion, rightBase.transform.position, transform.rotation);
         GameController.health -= 1;
     }

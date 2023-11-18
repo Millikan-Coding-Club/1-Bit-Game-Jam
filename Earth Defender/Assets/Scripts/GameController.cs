@@ -36,7 +36,7 @@ public class GameController : MonoBehaviour
     public TextMeshProUGUI TimerText;
     static public float time = 0;
     private int spawns = 0;
-    static public float cooldown = 1f;
+    static public float cooldown;
     static public float count = 1f;
     public float InitialDifficulty = 1f;
     public float DifficultyIncreasePerMin = 1f;
@@ -52,6 +52,7 @@ public class GameController : MonoBehaviour
     void Start()
     {
         Time.timeScale = 0f;
+        cooldown = 1f;
         Background.x = Random.Range(-1f, 1f);
         Background.y = Random.Range(-1f, 1f);
         selectedBaseStr = "";
@@ -64,6 +65,7 @@ public class GameController : MonoBehaviour
     void Update() {
         if (!isGameOver) {
             difficulty += Time.deltaTime / (60 / DifficultyIncreasePerMin);
+            cooldown = 1 + difficulty / 100;
             time += Time.deltaTime;
             if (count < cooldown)
             {
@@ -79,6 +81,10 @@ public class GameController : MonoBehaviour
             }
             if (Input.GetKeyDown(KeyCode.Alpha2)) {
                 selectBase(rightBase, "right");
+            }
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                Application.Quit();
             }
 
             if (Input.GetKeyDown(KeyCode.Mouse0)) {
@@ -120,7 +126,7 @@ public class GameController : MonoBehaviour
 
             // function to spawn asteroid as a function of time.
 
-            if (spawns + 1 < time * difficulty) {
+            if (spawns + 1 < time * 1.25 * difficulty) {
                 spawnAsteroid();
                 spawns++;
             }
@@ -168,7 +174,7 @@ public class GameController : MonoBehaviour
 
     private void gameOver()
     {
-        surviveText.text = "You Survived: " + Mathf.RoundToInt(time);
+        surviveText.text = "You survived for: " + Mathf.RoundToInt(time) + " seconds";
         TimerText.gameObject.SetActive(false);
         gameOverCanvas.SetActive(true);
         Time.timeScale = 0f;

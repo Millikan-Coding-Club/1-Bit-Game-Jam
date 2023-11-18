@@ -16,7 +16,7 @@ public class Satellite : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.RotateAround(new Vector3(0, 0, 0), new Vector3(0, 0, 1), Time.deltaTime * rotateSpeed);
+        transform.RotateAround(new Vector3(0, 0, 0), new Vector3(0, 0, 1), Time.fixedDeltaTime * rotateSpeed);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
