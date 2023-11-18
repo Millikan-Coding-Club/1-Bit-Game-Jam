@@ -44,6 +44,7 @@ public class GameController : MonoBehaviour
     public GameObject gameOverCanvas;
     public TextMeshProUGUI surviveText;
     public GameObject startCanvas;
+    public GameObject circleCanvas;
 
     bool isGameOver;
 
@@ -57,6 +58,8 @@ public class GameController : MonoBehaviour
         selectedBaseStr = "";
         difficulty = InitialDifficulty;
         gameOverCanvas.SetActive(false);
+        circleCanvas.SetActive(false);
+
         isGameOver = false;
     }
 
@@ -181,6 +184,10 @@ public class GameController : MonoBehaviour
 
     public void startGame()
     {
+        leftBaseSquare.SetActive(true);
+        rightBaseSquare.SetActive(true);
+        circleCanvas.SetActive(true);
+
         startCanvas.SetActive(false);
         TimerText.gameObject.SetActive(true);
         Time.timeScale = 1f;

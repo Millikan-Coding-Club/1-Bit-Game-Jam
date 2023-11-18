@@ -511,7 +511,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &159987735
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1860,7 +1860,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &991285638
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2071,6 +2071,7 @@ MonoBehaviour:
   gameOverCanvas: {fileID: 784535342}
   surviveText: {fileID: 1562886776}
   startCanvas: {fileID: 1567074545}
+  circleCanvas: {fileID: 1231437547}
 --- !u!4 &1113147796
 Transform:
   m_ObjectHideFlags: 0
@@ -2524,7 +2525,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!223 &1231437550
 Canvas:
   m_ObjectHideFlags: 0
