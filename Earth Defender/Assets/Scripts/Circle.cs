@@ -10,7 +10,7 @@ public class Circle : MonoBehaviour
     void Update()
     {
         transform.rotation = Quaternion.identity;
-        if (GameController.cooldown != 0 )
+        if (GameController.cooldown != 0 && GameController.selectedBaseStr != "")
         {
             image.fillAmount = 1 - GameController.count / GameController.cooldown;
         }
