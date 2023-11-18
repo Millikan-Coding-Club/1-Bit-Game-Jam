@@ -32,7 +32,6 @@ public class GameController : MonoBehaviour
     static public int health = 2;
     public AudioSource audioSource;
     public AudioClip SelectClip;
-    public AudioClip ReloadClip;
     public TextMeshProUGUI TimerText;
     static public float time = 0;
     private int spawns = 0;
@@ -52,7 +51,7 @@ public class GameController : MonoBehaviour
     void Start()
     {
         Time.timeScale = 0f;
-        cooldown = 1f;
+        cooldown = 95f;
         Background.x = Random.Range(-1f, 1f);
         Background.y = Random.Range(-1f, 1f);
         selectedBaseStr = "";
@@ -65,7 +64,7 @@ public class GameController : MonoBehaviour
     void Update() {
         if (!isGameOver) {
             difficulty += Time.deltaTime / (60 / DifficultyIncreasePerMin);
-            cooldown = 1 + difficulty / 100;
+            cooldown = .95f + difficulty / 100;
             time += Time.deltaTime;
             if (count < cooldown)
             {

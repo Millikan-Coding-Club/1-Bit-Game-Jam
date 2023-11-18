@@ -5,7 +5,7 @@ using UnityEngine;
 public class Satellite : MonoBehaviour
 {
     public GameObject explosion;
-    public float maxSpeed = 10f;
+    public float maxSpeed = 13f;
     private float rotateSpeed;
 
     private void Start()
